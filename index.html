@@ -5,34 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Delta Wiki</title>
     <link rel="stylesheet" href="style/main.css">
-    <link rel="icon" href="https://win98icons.alexmeub.com/icons/png/windows-1.png" type="image/png">
+    <!-- Иконка Windows 98 (встроена) -->
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKtJREFUOE9jZKAQMKLr//9/AqAOA2j6//9/rFAAsQyW5g+e/18G/P+v839gYPgPyLDB+R/g/z//Gf7//DP8//fl/+fnvz//f/79/R8Ww2E2AACxDAZGPgMVgCgA5gGyfSH/f/r0/f/Pz7//Hx/9/P/98/f/f/8+AXENkL4//v7/9/fn/z8/f/39+fv/z49f/n/9+gUQCyDZAADKNhgZgABqAzIAANYiGN0BAKT6AMY2AAUAANkuoPgfAQB09VcaSCz4hgAAAABJRU5ErkJggg==" type="image/png">
 </head>
 <body>
     <div id="desktop">
         <div id="desktop-icons">
-            <!-- Ярлыки на рабочем столе -->
+            <!-- Ярлыки на рабочем столе (иконки встроены) -->
             <div class="desktop-icon" data-content="home">
-                <img src="https://win98icons.alexmeub.com/icons/png/html-5.png" alt="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMHSURBVFhH7Zf/S1NxHMc/5+O9PA2Pj9rYkG0sN00x0xQVN8xCaTOrW2d3N/Vf+T8IgojQiy46CIKCIOiiKAm8iCFD0qBNmqbJNG3P5vle7x/Hk2Zmck3N9IFH53k/3+fn+/z+5kP/x8L1g108V5dJz1x8V/v9353G68tE2J+v8Q92gI1d15P3V/1QfYbHqSfZg91g5I+I3TqL15cJiAQUHq+r238BwG0n2Wc7QMSPiP06K4gEFP4J7+S7bS5f+hUBCYhEqA6Q6x/e4x5sBfrsC1SBiBDokwMkrwPyXbZ+6HAEJCAQhEIdIL8Acl3+sJ4R9vEe2gESkBDQj0B9Bci3d/0QAQmIQMiE6r+c/zJ3Xk8+3D7K/gBAqL4C5N49CRAZqB4B0n+zB5tBPsge7AASKwD5Dq8vhUL5Bcg3q9t/BwgEtAOk/yvLHy/xB7pBPsge6gYhL/EHtAMkd19P3v/WkQAJkP7tC5D/8l1Bfr/rRwiIQD0E6N+9CRDxv74A+bN6uH2U/dD3G13+x2V+v6sHEZCAej3d/gDkP9kDyP/q9g8gIQMh3yD/zR5sBr0vQO5/+SD/5f+T3sQ/2D4I6X/qgQRI//9738f7aAfIr7t/7/vI/z+tBwlIgAQQ/wXIN7v/2QOQ3yD/1RMA+cW7gvwv31+O+C/93/x/8S5AvtM/gPz//e+j+u9/rC9AvusfQN7//vfRx//s/o+f7x8i/1/s/n+9++f9r+8fIP/3vvf9r39APgLk/5e7P8D+3773/c/vHyD//e/7D+gD5Bcg/4s/IL8A8gD5L4A8QN4PyHcB5P3192f1+/uD/H7/4Pr7B8j7A/L+APkCkPcD5P0B+f1Bvj+Q7x/k+wf5/v7++uD6+vr7+/v19fVAvr6+vr4+/tX1x/WPr7+uv66vrr+ur67/uv7D/R/WP7D/wf1P9h/sP7D/wf0H9g/sP5D/U/+D/D/7D/J/6h/k/9Q/yP+pD+gD+gD+gQ7oBfrsBfqMA3R+Qv+jfjD9Gfrv5r9eJv/vF4m/G0/i//vTf4Z9BvtM+sz6zPpM+kz6nOq/9Ld/6W/rL+/f8j+6/+r/1f+r/2f/B3SBAH2A7h/8HwAA///FkL/T5PzVygAAAABJRU5ErkJggg==" alt="">
                 <span>Главная</span>
             </div>
             <div class="desktop-icon" data-content="npc">
-                <img src="https://win98icons.alexmeub.com/icons/png/users-1.png" alt="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACbklEQVRYR92Xz0tUYRjHP3e9V8lDQi+CQyGhpkZiCh1sSgmmECgECrp06tSqoSuHDoIgCCKCiCCCCLp069ZJQXCT4miSogbB2IisK831Xn06nhmGk2lquHrgge97zve8z3n+5znn+QJ4GMBxHAwGg5OTk0vV5P8+BwMAsiyj0+mFxcXFY2VbFkEQVFVVZ2dnN94uo+PT09NFnufhOF5eXp6ZTCbYth0Oh0dHR8uyLHg8Hmaz+fLy8mvz+Tzqup7NZl+9evXq/v7+SqXy1Wr15uZmRUVF3d3dEASRz+cfHR0Vi8W0Wu1qteparb5//359ff2LFy9eXl5aLpd3d3fFcdxoNIqiKJlM+v3+SqWyurrayWRSVVVVVXp6uqKiIvL5nEwmn5+fX1lZWVVVFY/HXVhYGBgY4PF4BEFQXl5eWlpaVFTk8/kEQfB4PPL5vNls3t7eFhcXf//+PTc3NxqNBgD8/v7m5+fn5uZWVVV1dHRER0dHRkZKJpNqtXppaamhoQGAxWJhNBp5PP78+XMAgKenp2Qyub29fXV19erqag6Hw2aziUTi8vJyOByenZ0dHh42Go1+v391dXVjY2NiYkIAwGaz8Xg8Ho/HZrOFQiGfzy8uLkZERADgyckJAOj1+oWFhZWVld7e3tra2jweD4vF4nK54jh+YWEBAC6Xy2Aw+Hw+h8PBarWKxeIWi2VkZGRiYgIAwWDw6OgoGo1uampqbm4GAHw+HzqdnpyczGazmUwmf39/sVg8NjbW0tJyZWXl+PgYAFit1rGxsbm5uZiYmLS0NAAArFYriUSam5vRaHRwcDAA4PP5PT09HR0d3djYeHx8DMDx+99/AMJdY/jB/i0DAAAAAElFTkSuQmCC" alt="">
                 <span>NPC и Боссы</span>
             </div>
             <div class="desktop-icon" data-content="map">
-                <img src="https://win98icons.alexmeub.com/icons/png/map_network-1.png" alt="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACHElEQVRYR+2Wv0vTcRTHP+/1vX/j2mRT1EgcgjiElIqgmw4BBycRBwcnhWBcBCcHBwf9F3BwcBHc3aSLg1AQrMupA4fiYhpaGtOkSa0tLX1N/p5zOQRiXnnh7t5wP+/3eZ/3+373BvgvL5aWlnLp6ekkEjGmaZIkc7lcwzBMJpOJRCJlWdbQ0MDv909OTvL7/eFwmCiKgiRhsVgMwzCZTDIajWEYDg4O+v1+nU4XCATee7PZnJmZ6ff7R0dHHx8fv/zX6/Xh4eGJiYn1en1gYCAQCOB5Hg6HAwD5fJ7L5Q4ODjY2Njo7O0+ePDk9Pb148WJpaenBwQGj0cjzPGVZBEGQUqlkMpkfPnzg8/kqlcqvv/7a6/UajUZBEPT7/XK5/NtvvxVFkclkVlZWkpKSysrKOjo6Ojs7h4eHr169Wl5efnd3VygUEgqFrVu3enp6BEHw9OlTLpe7fv261Wp1uVyVSuWoqKhf//rXuro6Ho83Njbm8/lxcXG5ubkRERG9vb1NTU2dTufk5OTs7Oxr165NTk52d3cHBgbGx8dHR0e3t7fL5XKhUAgEAgUFBSmVSiaTqdVqgiCAIAiCIEEQpFIpHo+n0+mJiYlqtfro0aNOTg7OubcM1Gq1wWDgOA7Hcb/fHx0dRaPRo6OjXq8Xj8cDgEqlkp+fn5iY4HkejuNyuayrqwMAfX19JSUlFotFtVrl8/lkMpmRkZGenh4Ap04B8Pf3R6PRYDDY1dXV1NRUX18PAGiahs1my2aziUQCADgcDhKJfHx8nJqaMhqNGhoa29vbHR0d+Qv/30H9AQCVYxX6Pq7aAAAAAElFTkSuQmCC" alt="">
                 <span>Карты</span>
             </div>
             <div class="desktop-icon" data-content="traders">
-                <img src="https://win98icons.alexmeub.com/icons/png/cash_register-1.png" alt="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA40lEQVRYR2P8//8/Ay0B46gFoxaMWjBqwagFoxYQgDy+f/8GANkX5P5rZsa/9WbO//dmpv+/NTPjv6gIeXAGaQCQvSD3X/R/Y//7n3f8f/x9x//Hnnf8T4A85KkD2QAgb4Hhr/0v+/x/1d+R/+v+D/xf9H9i/ys/+n9m+I9iBDlRBckAEIY89L/4eNe/5N3ev+Tds+D9WvC+rAXb18JtrwHbhwbYDgzYARIMKNgBIgwp2AEiDCjYASJMBtgJIkwG2AkyjCDYESMMKNhBIgy4AUYNGNUAAI5T4V4yG3tJAAAAAElFTkSuQmCC" alt="">
                 <span>Торговцы</span>
             </div>
             <div class="desktop-icon" data-content="weapons">
-                <img src="https://win98icons.alexmeub.com/icons/png/gun-2.png" alt="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAA9ElEQVRYR2P8//8/Ay0B46gFoxaMWjBqwagFoxYQgPz4/u0LSPaBPDgD6P8L8L8QeQeG/1AxyIMzoAFA3iHkHRj+Q/8n/r99BvLgzJABIHwEhv+gfwj4HwK/w+APiF8gfs+AwT9MDeRBGRACgLgLxL8B4v8gfgZi/xPxPwyAfEAGxAAgvoL4D8T+D8S/oAASAAmAxEBiIDIQCchAJCABkAAYkAwoAIEgAyICZEAGRAfIgAyICZAAGRABkQEyIAMSAAmQABkQEwB4YAYQIAOKASCDGUA0gGgA0QCiAUQDiAaQDWQDWQDmAaQByAOQDQBSBhhBLQAAQzFVx4TNY4AAAAAElFTkSuQmCC" alt="">
                 <span>Оружие</span>
             </div>
              <div class="desktop-icon" data-content="survival">
-                <img src="https://win98icons.alexmeub.com/icons/png/first_aid-0.png" alt="">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAsUlEQVRYR+2WwQ2AMAwEn4MP2FEd2IEd0IEd2IFdYg8lAR9UihTpk3wY9z5JCf8JgV8vAGzOPgK4A66Ay2Ay+B8gD7gDrkC2qg+A+voBSKq/A0jVfwOS6n8Ayfe/AyTf/wFSfS+A5PsfQPL9DyA53wsgWf8DSNrvAVK+l0Dy/Q8g2f8DSNZ/A5LpfwTJ/gNI+V4Cyf/3gDfgDrgCbs/6AXwB1HkL3JgQu5EAAAAASUVORK5CYII=" alt="">
                 <span>Выживание</span>
             </div>
         </div>
@@ -41,7 +42,8 @@
 
     <div id="taskbar">
         <div id="start-button">
-            <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start">
+            <!-- Иконка Windows (встроена) -->
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHnSURBVEhL7ZStS9NhGMd/59KkMWlIY4NYihQvgi526CAIgm52cBASBV2sIIiCoCsHRxeXiKCbXBz8AwhS9BBslTK0xGwiqU3jXJ/f4/A8LknT0B74wMOdcz/P+zzv89yHqirC+T9y/Z1Nnj3bI3n3aL3aE4/3W5O1/Qbg1c322b7d5t0TCf9E+1LbbL8n/4/3e0983m+d1vYHAK9vl3m3/2n6J9qf26/bB/cPBECe/B8AgHk375J9sf3d/qH9wwAItwDAoVbPdqx2b9vVw8d5AABG9PqOBwCAmD0v7Q8AAHbYHX8AAMi9WwCAmD0v7Q8AAHbYHX8AAMi9WwCAmD0v7Q8AALbYvR8AgNw7BQDg7+3X7Zt9sT23bxYv9i+WLY4uLi1ePBi8+AD43y+eLPavli0uLi5ePBi8eAD47y+eLPYvly1ePP4DyG+xevAAn88HkP+wWL14AJ/PB5B/sFi9eACfzwf+/xevD8j/4+J5/f/L5QV5EABAe/3//y8vIM8DAEB7AYDMuwEA2BcA4N0KANgXAOAdAIAMAIAMAIAMAIAMAIAMAIAMAIAMAIAMAIAMAIAMAIAMAADy362fAMZfljW5cHYiAAAAAElFTkSuQmCC" alt="Start">
             <span>Пуск</span>
         </div>
         <div id="taskbar-windows"></div>
@@ -51,20 +53,18 @@
     <div id="start-menu">
         <div class="start-menu-sidebar"></div>
         <ul>
-            <li data-content="home"><img src="https://win98icons.alexmeub.com/icons/png/html-5.png" alt="">Главная</li>
-            <li data-content="npc"><img src="https://win98icons.alexmeub.com/icons/png/users-1.png" alt="">NPC и Боссы</li>
-            <li data-content="map"><img src="https://win98icons.alexmeub.com/icons/png/map_network-1.png" alt="">Карты</li>
-            <li data-content="traders"><img src="https://win98icons.alexmeub.com/icons/png/cash_register-1.png" alt="">Торговцы</li>
-            <!-- ... остальные пункты ... -->
+            <li data-content="home"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIQSURBVEhL7ZXLaxNRGMf/O+lkpmmiMUn/A1I0pYpYiiIqDhZBceEiioIuXAsuXGlc+BcIuBFc+B8IuBBcWkVFEYtuVEYRjJbEaZqUJiXTyUzmvN+Zc0ya0pB64OHk3Pvd53f+d86l6jj+i+N0Oq/W65+YmHjr/n4iEQAUCoFisXh8fPxJ/lYQBCabzR0dHZPJJLPZnMlk/v7+oNFoNBrd3d1NTU21Wq0QCFitVqvV+uTJk/V6vV6vB4A9PT3NZvP+/ftrtdpxcbHRaDQazTAMx3Gv1xsYGBgMBlNTU2vXrl2+fPn8+fPZbLZAIEgkElqtVqPRWFlZWVlZCQkJtVotCILW1tbm5ub29vb+/v7+/v7Ozs4eHx9/fHwgCALDMIvFkslk+vr6RkdHq6urMzMzz549+z8QCALQ1NRUJpNJJJKfn++w2WwQBNVqlcvler3+4cOHQ0NDXq9XqVQGg0Gn01ksFoFA4HA4BEFQqVQKhaLT6QqFQlVVFQqFAgAsFgsA4PuBAADW1tY6OzvRaJSYmJienm63WwzDyuWy1+ttNpterxfHcWfOnCksLCwsLExMTHAcNxgMhULh5OQkKysLAJiamqLRaBKJNDY2NjMzk5OTu7u7iUSiVCqVSuX09PTc3Nz8/Pzq6mpLSwuLxaLT6TIyMsxms0ajcXJyUldXV15efvny5RcvXgwGAxRF2djYODo6WlhYGBoaGhgY4HK5nJycXC4XjuMsy2VnZwcGBlZWVrKzs4uLi9vb27Va7eDg4NOnT+vr60+fPpWUlGRnZxcVFcXjcYfD4eDg4Nra2vr6+urqKplMbmxsnDt3bvfu3X19fZvN5vn5+VOnTq1Zs4bP5+fk5GRlZTlczl9//QUAzjAYDA4ODgQCQU9PDwaDAwA2m61UKqenp8fHxwcHB4lEAgAmk4lCoWZmZsbGxjo7O4vF4uTk5NbWFhaLpVKpISEh3d3dXV1d+Qv/3yH9AXgK15K0r/zUAAAAAElFTkSuQmCC" alt="">Главная</li>
+            <li data-content="npc"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIQSURBVEhL7ZXLaxNRGMf/O+lkpmmiMUn/A1I0pYpYiiIqDhZBceEiioIuXAsuXGlc+BcIuBFc+B8IuBBcWkVFEYtuVEYRjJbEaZqUJiXTyUzmvN+Zc0ya0pB64OHk3Pvd53f+d86l6jj+i+N0Oq/W65+YmHjr/n4iEQAUCoFisXh8fPxJ/lYQBCabzR0dHZPJJLPZnMlk/v7+oNFoNBrd3d1NTU21Wq0QCFitVqvV+uTJk/V6vV6vB4A9PT3NZvP+/ftrtdpxcbHRaDQazTAMx3Gv1xsYGBgMBlNTU2vXrl2+fPn8+fPZbLZAIEgkElqtVqPRWFlZWVlZCQkJtVotCILW1tbm5ub29vb+/v7+/v7Ozs4eHx9/fHwgCALDMIvFkslk+vr6RkdHq6urMzMzz549+z8QCALQ1NRUJpNJJJKfn++w2WwQBNVqlcvler3+4cOHQ0NDXq9XqVQGg0Gn01ksFoFA4HA4BEFQqVQKhaLT6QqFQlVVFQqFAgAsFgsA4PuBAADW1tY6OzvRaJSYmJienm63WwzDyuWy1+ttNpterxfHcWfOnCksLCwsLExMTHAcNxgMhULh5OQkKysLAJiamqLRaBKJNDY2NjMzk5OTu7u7iUSiVCqVSuX09PTc3Nz8/Pzq6mpLSwuLxaLT6TIyMsxms0ajcXJyUldXV15efvny5RcvXgwGAxRF2djYODo6WlhYGBoaGhgY4HK5nJycXC4XjuMsy2VnZwcGBlZWVrKzs4uLi9vb27Va7eDg4NOnT+vr60+fPpWUlGRnZxcVFcXjcYfD4eDg4Nra2vr6+urqKplMbmxsnDt3bvfu3X19fZvN5vn5+VOnTq1Zs4bP5+fk5GRlZTlczl9//QUAzjAYDA4ODgQCQU9PDwaDAwA2m61UKqenp8fHxwcHB4lEAgAmk4lCoWZmZsbGxjo7O4vF4uTk5NbWFhaLpVKpISEh3d3dXV1d+Qv/3yH9AXgK15K0r/zUAAAAAElFTkSuQmCC" alt="">NPC и Боссы</li>
+            <!-- ... остальные пункты (убедитесь, что иконки тоже встроены) ... -->
             <hr>
             <li id="shutdown-button">
-                <img src="https://win98icons.alexmeub.com/icons/png/shut_down_normal-0.png" alt="Shutdown">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHwSURBVEhLzZW/S9NhGMd/59KpSSkNaSSKVCw9HhVcPOihoIgH8SAIehA82KFDh4Lg4EUQBL2I4uDk4EFcPAiCHkLpUqam9qVtShtr2vU9/ocYm2hSe9AHfFzud9/v83yf53Xp/7iuG6dOXdrb21vK4/0P/B4O3iAIAgCqavV6ff/+/Y3Nzc0+8w4AjEZjY2Pj4uICAHp6eoaGhgCAsWPHent7W1tbu7q6+vj4AIDa2tr6+vqCgoKenp6ioiJXV1dPT08PDw9BEGzbPjg4ODk5uW/fvrq6utPS0vbu3Vuv1+v1+v7+PplMjowMfH19eX19NTU1ZWdnh8Ph9+/ff3x8ZLPZERER0dHRw8NDEARBEHz9+tXX11ev10dGRjo7O5uamhoaGqqrqwEANputUCgOHDhw6NChgwcPjoqKiomJaWhooNFoc3NznZ2dFot19epVmUwGABKJBE3Tbre7ra3t2bNnjx49mpubo9Ho4eEhGo2Ojo4uLi5euXJlfX394cOHTU1NRqMhCIJOp6urq6urq0qlcv/+/Xw+f+zYsfHxcUNDQ7PZLCsr6+rqqtfro1AoJpPp9/tXVla6u7tBEJimiUajCoXCYDDGxsaioqKysrK4uLhoaKi5uRkEwWw25/f7R0ZGADh06NDExMTk5GRzc3NrayuBQDAYDJIkOzg4mJ+fr1ars7OzCoXi6urq7e0FAAzD5uXl+Xz+xYsX5+fnp06derBarVKpvHbtWq/Xy+VyPp+fnZ1l23YymSQSiUQiQRD09/f39vZOTk5WV1dbW1vb29tBEARBsFgsOp2ePn26r69PT09vbW319/dPTU01Njb6fD6TySQSiYGBgXw+/8iRIz09PbW1tYWFhXfv3s3KyjocDhAEiUTibW1tdXU1gH+wWCyZTJ6bm+vo6Pj6+vr5+fn4+JhMJudwOPiXwX/vH/0B5c4jN19m1lMAAAAASUVORK5CYII=" alt="Shutdown">
                 <span>Выключение...</span>
             </li>
         </ul>
     </div>
 
-    <!-- Экран выключения (скрыт по умолчанию) -->
+    <!-- Экран выключения -->
     <div id="shutdown-screen">
         <div class="shutdown-message">
             <h2>Завершение работы</h2>
