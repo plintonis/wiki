@@ -1,20 +1,21 @@
-/* --- Основные стили --- */
+/* --- Основные стили в духе Windows 98/2000 --- */
 body {
     font-family: 'MS Sans Serif', 'Tahoma', 'Verdana', sans-serif;
     font-size: 11px;
-    background: #008080;
+    /* ВОЗВРАЩЕН ПРОСТОЙ БИРЮЗОВЫЙ ЦВЕТ */
+    background: #008080; 
     margin: 0;
     overflow: hidden;
     user-select: none;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #desktop {
     height: calc(100vh - 28px);
     position: relative;
-    background-image: url('https://i.imgur.com/gA88P9d.jpg');
-    background-size: cover;
-    background-position: center;
     padding: 10px;
+    /* Свойство background-image полностью удалено */
 }
 
 /* --- Ярлыки на рабочем столе --- */
@@ -50,18 +51,151 @@ body {
     border: 1px dotted #FFFFFF;
 }
 
-/* --- Панель задач и меню "Пуск" (без изменений) --- */
-#taskbar { /* ... */ }
-#start-button { /* ... */ }
-#clock { /* ... */ }
-#start-menu { /* ... */ }
+/* --- Панель задач --- */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 28px;
+    background: #C0C0C0;
+    display: flex;
+    align-items: center;
+    border-top: 2px solid #FFFFFF;
+    z-index: 1000;
+}
 
-/* ... (вставьте сюда остальную часть стилей для панели задач и меню из предыдущего ответа) ... */
+#start-button {
+    background: #C0C0C0;
+    color: black;
+    font-weight: bold;
+    margin: 2px;
+    padding: 2px 8px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-top: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    box-shadow: 1px 1px 0 #000;
+}
+#start-button:active {
+    border-top: 1px solid #000000;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    box-shadow: none;
+}
+#start-button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
 
-/* --- Окна (без изменений) --- */
-.window { /* ... */ }
-.window-header { /* ... */ }
-/* ... (вставьте сюда остальную часть стилей для окон из предыдущего ответа) ... */
+#clock {
+    margin-left: auto;
+    color: black;
+    padding: 2px 10px;
+    height: calc(100% - 4px);
+    margin-right: 2px;
+    border: 1px solid #808080;
+    border-right: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+/* --- Меню "Пуск" --- */
+#start-menu {
+    position: fixed;
+    bottom: 28px;
+    left: 0;
+    width: 200px;
+    background: #C0C0C0;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    display: none;
+    z-index: 999;
+}
+#start-menu.show { display: flex; }
+#start-menu .start-menu-sidebar { width: 25px; background: #808080; }
+#start-menu ul { list-style: none; margin: 0; padding: 2px; width: 100%; }
+#start-menu li { padding: 6px 8px; cursor: pointer; display: flex; align-items: center; color: #000; }
+#start-menu li:hover { background: #000080; color: white; }
+#start-menu li img { width: 20px; height: 20px; margin-right: 8px; }
+#start-menu hr { border: 0; border-top: 1px solid #808080; border-bottom: 1px solid #FFFFFF; margin: 4px 0; }
+
+/* --- Окна --- */
+.window {
+    position: absolute;
+    min-width: 450px;
+    min-height: 300px;
+    background: #C0C0C0;
+    border-top: 2px solid #FFFFFF;
+    border-left: 2px solid #FFFFFF;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    padding: 2px;
+    resize: both;
+    overflow: hidden;
+}
+.window-header {
+    background: #000080;
+    color: white;
+    font-weight: bold;
+    padding: 3px 5px;
+    cursor: move;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.window-title { display: flex; align-items: center; gap: 5px; }
+.window-title-icon { width: 16px; height: 16px; }
+.window-controls { display: flex; }
+.window-controls button {
+    width: 16px;
+    height: 14px;
+    margin-left: 2px;
+    border-top: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+    background: #C0C0C0;
+    font-family: 'Marlett', 'Webdings', sans-serif;
+    font-size: 10px;
+    line-height: 10px;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+}
+.window-controls button:active { border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF; }
+.window-content {
+    margin: 5px;
+    padding: 15px;
+    flex-grow: 1;
+    overflow-y: auto;
+    color: #000;
+    line-height: 1.5;
+    background: white;
+    border: 1px solid #000;
+    border-top-color: #808080;
+    border-left-color: #808080;
+}
+.window-content::-webkit-scrollbar { width: 16px; }
+.window-content::-webkit-scrollbar-track { background: #dfdfdf; }
+.window-content::-webkit-scrollbar-thumb {
+    background: #C0C0C0;
+    border-top: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+.window-content h3, .window-content h4, .window-content h5 { margin-top: 0; }
+.window-content table { border-collapse: collapse; margin-top: 10px; }
+.window-content th { background-color: #f0f0f0; text-align: left;}
 
 /* --- Экран выключения --- */
 #shutdown-screen {
@@ -78,45 +212,14 @@ body {
     z-index: 9999;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
-    pointer-events: none; /* Чтобы нельзя было кликнуть, пока он невидим */
+    pointer-events: none;
 }
-
 #shutdown-screen.show {
     opacity: 1;
     pointer-events: all;
 }
-
 .shutdown-message {
     text-align: center;
     font-size: 24px;
     font-family: 'Tahoma', sans-serif;
 }
-.shutdown-message h2 {
-    margin: 0;
-}
-
-/* Копи-паст предыдущих стилей (панель задач, окна) */
-#taskbar { position: fixed; bottom: 0; width: 100%; height: 28px; background: #C0C0C0; display: flex; align-items: center; border-top: 2px solid #FFFFFF; z-index: 1000; }
-#start-button { background: #C0C0C0; color: black; font-weight: bold; margin: 2px; padding: 2px 8px; display: flex; align-items: center; cursor: pointer; border-top: 1px solid #FFFFFF; border-left: 1px solid #FFFFFF; border-right: 1px solid #000000; border-bottom: 1px solid #000000; box-shadow: 1px 1px 0 #000; }
-#start-button:active { border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF; box-shadow: none; }
-#start-button img { width: 20px; height: 20px; margin-right: 5px; }
-#clock { margin-left: auto; color: black; padding: 2px 10px; height: calc(100% - 4px); margin-right: 2px; border: 1px solid #808080; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF; }
-#start-menu { position: fixed; bottom: 28px; left: 0; width: 200px; background: #C0C0C0; border-top: 2px solid #FFFFFF; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-bottom: 2px solid #000000; display: none; z-index: 999; }
-#start-menu.show { display: flex; }
-#start-menu .start-menu-sidebar { width: 25px; background: #808080; }
-#start-menu ul { list-style: none; margin: 0; padding: 2px; width: 100%; }
-#start-menu li { padding: 6px 8px; cursor: pointer; display: flex; align-items: center; color: #000; }
-#start-menu li:hover { background: #000080; color: white; }
-#start-menu li img { width: 20px; height: 20px; margin-right: 8px; }
-#start-menu hr { border: 0; border-top: 1px solid #808080; border-bottom: 1px solid #FFFFFF; margin: 4px 0; }
-.window { position: absolute; min-width: 450px; min-height: 300px; background: #C0C0C0; border-top: 2px solid #FFFFFF; border-left: 2px solid #FFFFFF; border-right: 2px solid #000000; border-bottom: 2px solid #000000; box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; padding: 2px; resize: both; overflow: hidden; }
-.window-header { background: #000080; color: white; font-weight: bold; padding: 3px 5px; cursor: move; display: flex; justify-content: space-between; align-items: center; }
-.window-title { display: flex; align-items: center; gap: 5px; }
-.window-title-icon { width: 16px; height: 16px; }
-.window-controls { display: flex; }
-.window-controls button { width: 16px; height: 14px; margin-left: 2px; border-top: 1px solid #FFFFFF; border-left: 1px solid #FFFFFF; border-right: 1px solid #000000; border-bottom: 1px solid #000000; background: #C0C0C0; font-family: 'Marlett', 'Webdings', sans-serif; font-size: 10px; line-height: 10px; text-align: center; padding: 0; cursor: pointer; }
-.window-controls button:active { border-top: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #FFFFFF; border-bottom: 1px solid #FFFFFF; }
-.window-content { margin: 5px; padding: 15px; flex-grow: 1; overflow-y: auto; color: #000; line-height: 1.5; background: white; border: 1px solid #000; border-top-color: #808080; border-left-color: #808080; }
-.window-content::-webkit-scrollbar { width: 16px; }
-.window-content::-webkit-scrollbar-track { background: #dfdfdf; }
-.window-content::-webkit-scrollbar-thumb { background: #C0C0C0; border-top: 1px solid #FFFFFF; border-left: 1px solid #FFFFFF; border-right: 1px solid #000000; border-bottom: 1px solid #000000; }
