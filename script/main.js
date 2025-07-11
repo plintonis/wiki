@@ -5,24 +5,74 @@ document.addEventListener('DOMContentLoaded', () => {
     const clock = document.getElementById('clock');
     let zIndex = 1;
 
-    // --- Часы ---
-    function updateClock() {
-        const now = new Date();
-        const time = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-        clock.textContent = time;
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+    // --- Обновление часов ---
+    // ... (код часов без изменений) ...
 
-    // --- Меню "Пуск" ---
-    startButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        startMenu.classList.toggle('show');
+    // --- Логика меню "Пуск" ---
+    // ... (код меню "Пуск" без изменений) ...
+
+    // --- НОВОЕ: Логика иконок на рабочем столе ---
+    const desktopIcons = document.querySelectorAll('.desktop-icon');
+
+    function deselectAllIcons() {
+        desktopIcons.forEach(icon => icon.classList.remove('selected'));
+    }
+
+    desktopIcons.forEach(icon => {
+        // Выделение по одному клику
+        icon.addEventListener('click', (e) => {
+            e.stopPropagation(); // Предотвращаем срабатывание клика по рабочему столу
+            deselectAllIcons();
+            icon.classList.add('selected');
+        });
+
+        // Открытие окна по двойному клику
+        icon.addEventListener('dblclick', () => {
+            const contentFile = icon.dataset.content;
+            const iconSrc = icon.querySelector('img').src;
+            const title = icon.querySelector('span').innerText;
+            createWindow(contentFile, iconSrc, title);
+        });
     });
+
+    // Снятие выделения при клике на рабочий стол
+    desktop.addEventListener('click', () => {
+        deselectAllIcons();
+    });
+
+    // --- НОВОЕ: Логика кнопки выключения ---
+    const shutdownButton = document.getElementById('shutdown-button');
+    const shutdownScreen = document.getElementById('shutdown-screen');
+    const shutdownSound = document.getElementById('shutdown-sound');
+
+    shutdownButton.addEventListener('click', () => {
+        shutdownSound.play();
+        shutdownScreen.classList.add('show');
+
+        // Для большего реализма можно добавить сообщение после звука
+        setTimeout(() => {
+            const message = shutdownScreen.querySelector('.shutdown-message p');
+            if(message) message.textContent = "Теперь питание компьютера можно отключить.";
+        }, 4000); // Примерно длительность звука
+    });
+
+
+    // --- Создание окна ---
+    async function createWindow(contentId, iconSrc, title) {
+        // ... (код создания окна без изменений) ...
+    }
+
+    // --- Перетаскивание окна ---
+    function makeDraggable(element) {
+        // ... (код перетаскивания с ограничением без изменений) ...
+    }
+
+    // Копи-паст предыдущего кода JS для полноты
+    function updateClock() { const now = new Date(); const time = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }); clock.textContent = time; }
+    setInterval(updateClock, 1000); updateClock();
+    startButton.addEventListener('click', (e) => { e.stopPropagation(); startMenu.classList.toggle('show'); });
     document.addEventListener('click', () => startMenu.classList.remove('show'));
     startMenu.addEventListener('click', (e) => e.stopPropagation());
-
-    // --- Обработка кликов по меню ---
     startMenu.querySelectorAll('li[data-content]').forEach(item => {
         item.addEventListener('click', () => {
             const contentFile = item.getAttribute('data-content');
@@ -32,87 +82,36 @@ document.addEventListener('DOMContentLoaded', () => {
             startMenu.classList.remove('show');
         });
     });
-
-    document.getElementById('theme-switcher').addEventListener('click', () => {
-        alert("Смена темы в этой версии Windows не поддерживается :)");
-        startMenu.classList.remove('show');
-    });
-    
-    // --- Создание окна ---
+    document.getElementById('theme-switcher')?.addEventListener('click', () => { alert("Параметры не реализованы."); startMenu.classList.remove('show'); });
     async function createWindow(contentId, iconSrc, title) {
         if (document.querySelector(`.window[data-id="${contentId}"]`)) return;
-
         const windowEl = document.createElement('div');
-        windowEl.className = 'window';
-        windowEl.dataset.id = contentId;
-        windowEl.style.zIndex = ++zIndex;
-        windowEl.style.top = `${30 + (Object.keys(desktop.children).length * 25) % 200}px`;
-        windowEl.style.left = `${50 + (Object.keys(desktop.children).length * 25) % 300}px`;
-
+        windowEl.className = 'window'; windowEl.dataset.id = contentId; windowEl.style.zIndex = ++zIndex;
+        windowEl.style.top = `${30 + (document.querySelectorAll('.window').length * 25) % 200}px`;
+        windowEl.style.left = `${50 + (document.querySelectorAll('.window').length * 25) % 300}px`;
         const response = await fetch(`content/${contentId}.html`);
         const contentHtml = await response.text();
-        
-        windowEl.innerHTML = `
-            <div class="window-header">
-                <span class="window-title">
-                    <img src="${iconSrc}" class="window-title-icon" alt="">
-                    ${title}
-                </span>
-                <div class="window-controls">
-                    <button class="minimize">0</button>
-                    <button class="maximize">1</button>
-                    <button class="close">r</button>
-                </div>
-            </div>
-            <div class="window-content">${contentHtml}</div>
-        `;
-
+        windowEl.innerHTML = `<div class="window-header"><span class="window-title"><img src="${iconSrc}" class="window-title-icon" alt="">${title}</span><div class="window-controls"><button class="minimize">0</button><button class="maximize">1</button><button class="close">r</button></div></div><div class="window-content">${contentHtml}</div>`;
         desktop.appendChild(windowEl);
         makeDraggable(windowEl);
-        
-        if (contentId === 'copy') { /* ... логика для окна копирования ... */ }
-
         windowEl.querySelector('.close').addEventListener('click', () => windowEl.remove());
-        windowEl.addEventListener('mousedown', () => {
-            windowEl.style.zIndex = ++zIndex;
-        });
+        windowEl.addEventListener('mousedown', () => { windowEl.style.zIndex = ++zIndex; });
     }
-
     function makeDraggable(element) {
         const header = element.querySelector('.window-header');
         let offsetX, offsetY;
-
         header.addEventListener('mousedown', (e) => {
             if (e.target.tagName === 'BUTTON' || e.target.parentElement.classList.contains('window-controls')) return;
-            offsetX = e.clientX - element.offsetLeft;
-            offsetY = e.clientY - element.offsetTop;
-            document.addEventListener('mousemove', onMouseMove);
-            document.addEventListener('mouseup', onMouseUp);
+            offsetX = e.clientX - element.offsetLeft; offsetY = e.clientY - element.offsetTop;
+            document.addEventListener('mousemove', onMouseMove); document.addEventListener('mouseup', onMouseUp);
         });
-
         function onMouseMove(e) {
-            // --- НОВАЯ ЛОГИКА ОГРАНИЧЕНИЯ ПЕРЕТАСКИВАНИЯ ---
             const desktopRect = desktop.getBoundingClientRect();
-            
-            // Вычисляем новые координаты
-            let newX = e.clientX - offsetX;
-            let newY = e.clientY - offsetY;
-
-            // Ограничиваем по горизонтали (левая и правая границы)
-            newX = Math.max(0, newX); // не уходить левее 0
-            newX = Math.min(newX, desktopRect.width - element.offsetWidth); // не уходить правее
-
-            // Ограничиваем по вертикали (верхняя и нижняя границы)
-            newY = Math.max(0, newY); // не уходить выше 0
-            newY = Math.min(newY, desktopRect.height - element.offsetHeight); // не уходить ниже
-
-            element.style.left = `${newX}px`;
-            element.style.top = `${newY}px`;
+            let newX = e.clientX - offsetX; let newY = e.clientY - offsetY;
+            newX = Math.max(0, newX); newX = Math.min(newX, desktopRect.width - element.offsetWidth);
+            newY = Math.max(0, newY); newY = Math.min(newY, desktopRect.height - element.offsetHeight);
+            element.style.left = `${newX}px`; element.style.top = `${newY}px`;
         }
-
-        function onMouseUp() {
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup', onMouseUp);
-        }
+        function onMouseUp() { document.removeEventListener('mousemove', onMouseMove); document.removeEventListener('mouseup', onMouseUp); }
     }
 });
