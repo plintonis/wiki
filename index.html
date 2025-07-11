@@ -5,43 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Delta Wiki</title>
     <link rel="stylesheet" href="style/main.css">
-    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAKtJREFUOE9jZKAQMKLr//9/AqAOA2j6//9/rFAAsQyW5g+e/18G/P+v839gYPgPyLDB+R/g/z//Gf7//DP8//fl/+fnvz//f/79/R8Ww2E2AACxDAZGPgMVgCgA5gGyfSH/f/r0/f/Pz7//Hx/9/P/98/f/f/8+AXENkL4//v7/9/fn/z8/f/39+fv/z49f/n/9+gUQCyDZAADKNhgZgABqAzIAANYiGN0BAKT6AMY2AAUAANkuoPgfAQB09VcaSCz4hgAAAABJRU5ErkJggg==" type="image/png">
+    <!-- Иконка сайта -->
+    <link rel="icon" href="assets/start.png" type="image/png">
 </head>
 <body>
     <div id="desktop">
         <div id="desktop-icons">
-            <div class="desktop-icon" data-content="home"><div class="icon-placeholder"></div><span>Home</span></div>
-            <div class="desktop-icon" data-content="npc"><div class="icon-placeholder"></div><span>NPCs & Bosses</span></div>
-            <div class="desktop-icon" data-content="quests"><div class="icon-placeholder"></div><span>Quests</span></div>
-            <div class="desktop-icon" data-content="map"><div class="icon-placeholder"></div><span>Maps</span></div>
-            <div class="desktop-icon" data-content="traders"><div class="icon-placeholder"></div><span>Traders</span></div>
-            <div class="desktop-icon" data-content="weapons"><div class="icon-placeholder"></div><span>Weapons</span></div>
-            <div class="desktop-icon" data-content="survival"><div class="icon-placeholder"></div><span>Survival</span></div>
-            <div class="desktop-icon" data-content="loot"><div class="icon-placeholder"></div><span>Loot</span></div>
+            <div class="desktop-icon" data-content="home"><img src="assets/icons8-textsheet-50.png" alt="Home"><span>Home</span></div>
+            <div class="desktop-icon" data-content="npc"><img src="assets/icons8-textsheet-50.png" alt="NPCs"><span>NPCs & Bosses</span></div>
+            <div class="desktop-icon" data-content="quests"><img src="assets/icons8-textsheet-50.png" alt="Quests"><span>Quests</span></div>
+            <div class="desktop-icon" data-content="map"><img src="assets/icons8-textsheet-50.png" alt="Maps"><span>Maps</span></div>
+            <div class="desktop-icon" data-content="traders"><img src="assets/icons8-textsheet-50.png" alt="Traders"><span>Traders</span></div>
+            <div class="desktop-icon" data-content="weapons"><img src="assets/icons8-textsheet-50.png" alt="Weapons"><span>Weapons</span></div>
+            <div class="desktop-icon" data-content="survival"><img src="assets/icons8-textsheet-50.png" alt="Survival"><span>Survival</span></div>
+            <div class="desktop-icon" data-content="loot"><img src="assets/icons8-textsheet-50.png" alt="Loot"><span>Loot</span></div>
         </div>
     </div>
     <div id="taskbar">
-        <div id="start-button"><div class="icon-placeholder start-icon"></div><span>Start</span></div>
+        <div id="start-button">
+            <img src="assets/start.png" alt="Start">
+            <span>Start</span>
+        </div>
         <div id="taskbar-windows"></div>
         <div id="clock"></div>
     </div>
     <div id="start-menu">
-        <div class="start-menu-sidebar"></div>
+        <div class="start-menu-sidebar"><span class="sidebar-text">Project Delta</span></div>
         <ul>
-            <li data-content="home"><div class="icon-placeholder"></div>Home</li>
-            <li data-content="npc"><div class="icon-placeholder"></div>NPCs & Bosses</li>
-            <li data-content="quests"><div class="icon-placeholder"></div>Quests</li>
-            <li data-content="map"><div class="icon-placeholder"></div>Maps</li>
-            <li data-content="traders"><div class="icon-placeholder"></div>Traders</li>
-            <li data-content="weapons"><div class="icon-placeholder"></div>Weapons</li>
-            <li data-content="survival"><div class="icon-placeholder"></div>Survival</li>
-            <li data-content="loot"><div class="icon-placeholder"></div>Loot</li>
+            <li data-content="home"><img src="assets/icons8-textsheet-50.png" alt="">Home</li>
+            <li data-content="npc"><img src="assets/icons8-textsheet-50.png" alt="">NPCs & Bosses</li>
+            <li data-content="quests"><img src="assets/icons8-textsheet-50.png" alt="">Quests</li>
+            <li data-content="map"><img src="assets/icons8-textsheet-50.png" alt="">Maps</li>
+            <li data-content="traders"><img src="assets/icons8-textsheet-50.png" alt="">Traders</li>
+            <li data-content="weapons"><img src="assets/icons8-textsheet-50.png" alt="">Weapons</li>
+            <li data-content="survival"><img src="assets/icons8-textsheet-50.png" alt="">Survival</li>
+            <li data-content="loot"><img src="assets/icons8-textsheet-50.png" alt="">Loot</li>
             <hr>
-            <li id="shutdown-button"><div class="icon-placeholder"></div><span>Shut Down...</span></li>
+            <li id="shutdown-button"><img src="assets/start.png" alt="Shutdown"><span>Shut Down...</span></li>
         </ul>
     </div>
+    
     <div id="shutdown-screen"><div class="shutdown-message"><h2>Shutting down</h2><p>Please wait...</p></div></div>
     <audio id="shutdown-sound" src="https://www.winhistory.de/more/winxp/sounds/Windows%20XP%20Shutdown.wav"></audio>
+
     <script src="script/main.js"></script>
 </body>
 </html>
