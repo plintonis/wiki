@@ -5,17 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Delta Wiki</title>
     <link rel="stylesheet" href="style/main.css">
-    <!-- Иконка Windows 98 -->
     <link rel="icon" href="https://win98icons.alexmeub.com/icons/png/windows-1.png" type="image/png">
 </head>
 <body>
     <div id="desktop">
+        <div id="desktop-icons">
+            <!-- Ярлыки на рабочем столе -->
+            <div class="desktop-icon" data-content="home">
+                <img src="https://win98icons.alexmeub.com/icons/png/html-5.png" alt="">
+                <span>Главная</span>
+            </div>
+            <div class="desktop-icon" data-content="npc">
+                <img src="https://win98icons.alexmeub.com/icons/png/users-1.png" alt="">
+                <span>NPC и Боссы</span>
+            </div>
+            <div class="desktop-icon" data-content="map">
+                <img src="https://win98icons.alexmeub.com/icons/png/map_network-1.png" alt="">
+                <span>Карты</span>
+            </div>
+            <div class="desktop-icon" data-content="traders">
+                <img src="https://win98icons.alexmeub.com/icons/png/cash_register-1.png" alt="">
+                <span>Торговцы</span>
+            </div>
+            <div class="desktop-icon" data-content="weapons">
+                <img src="https://win98icons.alexmeub.com/icons/png/gun-2.png" alt="">
+                <span>Оружие</span>
+            </div>
+             <div class="desktop-icon" data-content="survival">
+                <img src="https://win98icons.alexmeub.com/icons/png/first_aid-0.png" alt="">
+                <span>Выживание</span>
+            </div>
+        </div>
         <!-- Окна будут появляться здесь -->
     </div>
 
     <div id="taskbar">
         <div id="start-button">
-            <!-- Иконка Windows 95/98 -->
             <img src="https://win98icons.alexmeub.com/icons/png/windows-0.png" alt="Start">
             <span>Пуск</span>
         </div>
@@ -30,14 +55,25 @@
             <li data-content="npc"><img src="https://win98icons.alexmeub.com/icons/png/users-1.png" alt="">NPC и Боссы</li>
             <li data-content="map"><img src="https://win98icons.alexmeub.com/icons/png/map_network-1.png" alt="">Карты</li>
             <li data-content="traders"><img src="https://win98icons.alexmeub.com/icons/png/cash_register-1.png" alt="">Торговцы</li>
-            <li data-content="weapons"><img src="https://win98icons.alexmeub.com/icons/png/gun-2.png" alt="">Оружие</li>
-            <li data-content="survival"><img src="https://win98icons.alexmeub.com/icons/png/first_aid-0.png" alt="">Выживание</li>
-            <li data-content="loot"><img src="https://win98icons.alexmeub.com/icons/png/box-3.png" alt="">Лут</li>
+            <!-- ... остальные пункты ... -->
             <hr>
-            <li data-content="copy"><img src="https://win98icons.alexmeub.com/icons/png/application_hourglass-2.png" alt="">Копирование...</li>
-            <li id="theme-switcher"><img src="https://win98icons.alexmeub.com/icons/png/color_profile-1.png" alt="">Параметры</li>
+            <li id="shutdown-button">
+                <img src="https://win98icons.alexmeub.com/icons/png/shut_down_normal-0.png" alt="Shutdown">
+                <span>Выключение...</span>
+            </li>
         </ul>
     </div>
+
+    <!-- Экран выключения (скрыт по умолчанию) -->
+    <div id="shutdown-screen">
+        <div class="shutdown-message">
+            <h2>Завершение работы</h2>
+            <p>Пожалуйста, подождите...</p>
+        </div>
+    </div>
+    
+    <!-- Звук выключения -->
+    <audio id="shutdown-sound" src="https://www.winhistory.de/more/winxp/sounds/Windows%20XP%20Shutdown.wav"></audio>
 
     <script src="script/main.js"></script>
 </body>
