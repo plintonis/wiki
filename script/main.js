@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Получение основных элементов ---
     const desktop = document.getElementById('desktop');
     const startMenu = document.getElementById('start-menu');
     const taskbarWindows = document.getElementById('taskbar-windows');
@@ -7,20 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Логика для ярлыков на рабочем столе ---
     document.querySelectorAll('.desktop-icon').forEach(icon => {
+        // Выделение по одному клику
         icon.addEventListener('click', (e) => {
             e.stopPropagation();
             document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
             icon.classList.add('selected');
         });
+        // Открытие окна по двойному клику
         icon.addEventListener('dblclick', () => openWindowFromElement(icon));
     });
-    desktop.addEventListener('click', () => document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected')));
+    // Снятие выделения при клике на рабочий стол
+    desktop.addEventListener('click', () => {
+        document.querySelectorAll('.desktop-icon').forEach(i => i.classList.remove('selected'));
+    });
     
     // --- Логика меню "Пуск" ---
-    document.getElementById('start-button').addEventListener('click', e => { e.stopPropagation(); startMenu.classList.toggle('show'); });
+    document.getElementById('start-button').addEventListener('click', e => {
+        e.stopPropagation();
+        startMenu.classList.toggle('show');
+    });
     document.addEventListener('click', () => startMenu.classList.remove('show'));
     startMenu.addEventListener('click', e => e.stopPropagation());
-    startMenu.querySelectorAll('li[data-content]').forEach(item => item.addEventListener('click', () => openWindowFromElement(item)));
+    startMenu.querySelectorAll('li[data-content]').forEach(item => {
+        item.addEventListener('click', () => openWindowFromElement(item));
+    });
 
     // --- Логика кнопки выключения ---
     document.getElementById('shutdown-button').addEventListener('click', () => {
@@ -33,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const contentId = element.dataset.content;
         const title = element.querySelector('span')?.innerText || element.innerText;
         
-        // Если окно уже существует, сфокусируемся на нем
         const existingWindow = document.querySelector(`.window[data-id="${contentId}"]`);
         if (existingWindow) {
             setFocus(existingWindow);
@@ -66,9 +76,9 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         desktop.appendChild(windowEl);
+        createTaskbarButton(windowEl, title);
         setFocus(windowEl);
         makeDraggable(windowEl);
-        createTaskbarButton(windowEl, title);
 
         // --- Обработчики кнопок управления окном ---
         windowEl.querySelector('.close-btn').addEventListener('click', () => closeWindow(windowEl));
@@ -83,19 +93,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const taskbarBtn = document.querySelector(`.taskbar-button[data-id="${windowEl.dataset.id}"]`);
         if (taskbarBtn) taskbarBtn.remove();
         windowEl.remove();
+        activeWindow = null;
     }
 
     function minimizeWindow(windowEl) {
         windowEl.classList.add('minimized');
         const taskbarBtn = document.querySelector(`.taskbar-button[data-id="${windowEl.dataset.id}"]`);
-        taskbarBtn.classList.remove('active');
+        if(taskbarBtn) taskbarBtn.classList.remove('active');
         activeWindow = null;
     }
 
     function toggleMaximize(windowEl) {
         const maximizeBtn = windowEl.querySelector('.maximize-btn');
         if (windowEl.dataset.state === 'maximized') {
-            // Восстановить
+            // Восстановить в нормальный размер
             windowEl.classList.remove('maximized');
             windowEl.style.top = windowEl.dataset.oldTop || '10%';
             windowEl.style.left = windowEl.dataset.oldLeft || '10%';
@@ -104,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             windowEl.dataset.state = 'normal';
             maximizeBtn.textContent = '1'; // Иконка "развернуть"
         } else {
-            // Развернуть
+            // Развернуть на весь экран
             const rect = windowEl.getBoundingClientRect();
             windowEl.dataset.oldTop = `${rect.top}px`;
             windowEl.dataset.oldLeft = `${rect.left}px`;
@@ -117,18 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function setFocus(windowEl) {
-        if (activeWindow === windowEl) return;
+        if (activeWindow === windowEl && !windowEl.classList.contains('minimized')) return;
         
-        // Снять фокус со всех
         document.querySelectorAll('.taskbar-button').forEach(btn => btn.classList.remove('active'));
+        if (activeWindow) activeWindow.classList.remove('active');
         
-        // Установить фокус на новое окно
         windowEl.style.zIndex = ++zIndex;
         const taskbarBtn = document.querySelector(`.taskbar-button[data-id="${windowEl.dataset.id}"]`);
         if (taskbarBtn) taskbarBtn.classList.add('active');
         activeWindow = windowEl;
 
-        // Если окно было свернуто, развернуть его
         windowEl.classList.remove('minimized');
     }
 
@@ -138,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         button.dataset.id = windowEl.dataset.id;
         button.textContent = title;
         button.addEventListener('click', () => {
-             if (windowEl.classList.contains('minimized')) {
+            if (windowEl.classList.contains('minimized')) {
                 setFocus(windowEl);
             } else if (activeWindow === windowEl) {
                 minimizeWindow(windowEl);
@@ -153,20 +162,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = element.querySelector('.window-header');
         let offsetX, offsetY;
         header.addEventListener('mousedown', (e) => {
-            if (element.dataset.state === 'maximized' || e.target.tagName === 'BUTTON') return;
-            offsetX = e.clientX - element.offsetLeft; offsetY = e.clientY - element.offsetTop;
+            if (element.dataset.state === 'maximized' || e.target.tagName === 'BUTTON' || e.target.parentElement.classList.contains('window-controls')) return;
+            offsetX = e.clientX - element.offsetLeft;
+            offsetY = e.clientY - element.offsetTop;
             document.addEventListener('mousemove', onMouseMove);
             document.addEventListener('mouseup', onMouseUp);
         });
 
-        function onMouseMove(e) { /* ... логика перетаскивания с границами ... */ }
-        function onMouseUp() { /* ... */ }
-        // Вставьте сюда функции onMouseMove и onMouseUp из предыдущего ответа
+        function onMouseMove(e) {
+            const desktopRect = desktop.getBoundingClientRect();
+            let newX = e.clientX - offsetX;
+            let newY = e.clientY - offsetY;
+            newX = Math.max(0, Math.min(newX, desktopRect.width - element.offsetWidth));
+            newY = Math.max(0, Math.min(newY, desktopRect.height - element.offsetHeight));
+            element.style.left = `${newX}px`;
+            element.style.top = `${newY}px`;
+        }
+        function onMouseUp() {
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup', onMouseUp);
+        }
     }
 
     // Обновление часов
     setInterval(() => {
         const now = new Date();
-        document.getElementById('clock').textContent = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+        document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
     }, 1000);
 });
